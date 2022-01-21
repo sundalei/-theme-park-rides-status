@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import org.apache.commons.lang3.StringUtils;
 
 public class RideStatusService {
     public static void main(String[] args) {
@@ -23,7 +24,7 @@ public class RideStatusService {
     }
 
     public static String getRideStatus(String ride) {
-        List<String> rideStatuses = readFile(String.format("%s.txt", ride));
+        List<String> rideStatuses = readFile(StringUtils.trim(String.format("%s.txt", ride)));
         return rideStatuses.get(new Random().nextInt(rideStatuses.size()));
     }
 
