@@ -1,5 +1,14 @@
 plugins {
-    id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'com.gradlehero.themepark.RideStatusService'
+}
+
+tasks.register('runJar', JavaExec) {
+    classpath tasks.named('jar').map {it.outputs }
+    args 'teacups'
 }
 
 tasks.named('jar') {
@@ -20,4 +29,16 @@ repositories {
 
 tasks.withType(Test).configureEach() {
     it.useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile).configureEach() {
+    options.verbose = true
+}
+
+tasks.named('processResources') {
+    include '**/*.txt'
+}
+
+tasks.named('jar') {
+    archiveFileName = 'test.jar'
 }
