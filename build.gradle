@@ -32,7 +32,7 @@ repositories {
 }
 
 tasks.withType(Test).configureEach() {
-    it.useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 tasks.withType(JavaCompile).configureEach() {
